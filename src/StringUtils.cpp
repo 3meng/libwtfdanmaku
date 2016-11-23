@@ -32,7 +32,7 @@ namespace WTFDanmaku {
         }
     }
 
-    inline double StrTod(const std::string& str, double def = 0.0)
+    double StrTod(const std::string& str, double def)
     {
         const char *ptr = str.c_str();
         char *pend;
@@ -47,7 +47,7 @@ namespace WTFDanmaku {
         return ret;
     }
 
-    inline float StrTof(const std::string& str, float def = 0.0f)
+    float StrTof(const std::string& str, float def)
     {
         const char *ptr = str.c_str();
         char *pend;
@@ -62,7 +62,7 @@ namespace WTFDanmaku {
         return ret;
     }
 
-    inline int StrToi(const std::string& str, int def = 0, int base = 10)
+    int StrToi(const std::string& str, int def, int base)
     {
         const char *ptr = str.c_str();
         char *pend;
@@ -77,7 +77,7 @@ namespace WTFDanmaku {
         return static_cast<int>(ret);
     }
 
-    inline long long StrToll(const std::string& str, long long def = 0LL, int base = 10)
+    long long StrToll(const std::string& str, long long def, int base)
     {
         const char *ptr = str.c_str();
         char *pend;
@@ -92,7 +92,7 @@ namespace WTFDanmaku {
         return ret;
     }
 
-    inline unsigned long long StrToull(const std::string& str, unsigned long long def = 0ull, int base = 10)
+    unsigned long long StrToull(const std::string& str, unsigned long long def, int base)
     {
         const char *ptr = str.c_str();
         char *pend;

@@ -50,42 +50,69 @@ WTF_C_API int      __stdcall WTF_QuerySwapChain(WTF_Instance* instance, const vo
     return controller->QuerySwapChain(pGuid, ppObject);
 }
 
-WTF_C_API void     __stdcall WTF_LoadBilibiliFile(WTF_Instance* instance, const char* filePath) {
+WTF_C_API bool     __stdcall WTF_LoadBilibiliFile(WTF_Instance* instance, const char* filePath) {
     Controller* controller = reinterpret_cast<Controller*>(instance->controller);
 
     ParserRef parser = BilibiliParser::Create();
-    parser->ParseFileSource(filePath);
-    controller->GetManager()->SetDanmakuList(std::move(parser->GetDanmakus()));
+    if(!parser->ParseFileSource(filePath))
+    {
+        return false;
+    }
+
+    controller->GetManager()->SetDanmakuList(parser->GetDanmakus());
+    return true;
 }
 
-WTF_C_API void     __stdcall WTF_LoadBilibiliFileW(WTF_Instance* instance, const wchar_t* filePath) {
+WTF_C_API bool     __stdcall WTF_LoadBilibiliFileW(WTF_Instance* instance, const wchar_t* filePath) {
     Controller* controller = reinterpret_cast<Controller*>(instance->controller);
 
     ParserRef parser = BilibiliParser::Create();
-    parser->ParseFileSource(filePath);
-    controller->GetManager()->SetDanmakuList(std::move(parser->GetDanmakus()));
+    if(!parser->ParseFileSource(filePath))
+    {
+        return false;
+    }
+
+    controller->GetManager()->SetDanmakuList(parser->GetDanmakus());
+    return true;
 }
 
-WTF_C_API void     __stdcall WTF_LoadBilibiliXml(WTF_Instance* instance, const char* str) {
+WTF_C_API bool     __stdcall WTF_LoadBilibiliXml(WTF_Instance* instance, const char* str) {
     Controller* controller = reinterpret_cast<Controller*>(instance->controller);
 
     ParserRef parser = BilibiliParser::Create();
-    parser->ParseStringSource(str);
-    controller->GetManager()->SetDanmakuList(std::move(parser->GetDanmakus()));
+    if(!parser->ParseStringSource(str))
+    {
+        return false;
+    }
+
+    controller->GetManager()->SetDanmakuList(parser->GetDanmakus());
+    return true;
 }
 
-WTF_C_API void     __stdcall WTF_AddDanmaku(WTF_Instance* instance, int type, int64_t time, const wchar_t* comment, int fontSize, int fontColor, int64_t timestamp, int danmakuId) {
+WTF_C_API bool     __stdcall WTF_AddDanmaku(WTF_Instance* instance, int type, int64_t time, const wchar_t* comment, int fontSize, int fontColor, int64_t timestamp, int danmakuId) {
     Controller* controller = reinterpret_cast<Controller*>(instance->controller);
 
     DanmakuRef danmaku = DanmakuFactory::CreateDanmaku(static_cast<DanmakuType>(type), time, std::wstring(comment), fontSize, fontColor, timestamp, danmakuId);
+    if (nullptr == danmaku.Get())
+    {
+        return false;
+    }
+
     controller->GetManager()->AddDanmaku(danmaku);
+    return true;
 }
 
-WTF_C_API void     __stdcall WTF_AddLiveDanmaku(WTF_Instance* instance, int type, int64_t time, const wchar_t* comment, int fontSize, int fontColor, int64_t timestamp, int danmakuId) {
+WTF_C_API bool     __stdcall WTF_AddLiveDanmaku(WTF_Instance* instance, int type, int64_t time, const wchar_t* comment, int fontSize, int fontColor, int64_t timestamp, int danmakuId) {
     Controller* controller = reinterpret_cast<Controller*>(instance->controller);
 
     DanmakuRef danmaku = DanmakuFactory::CreateDanmaku(static_cast<DanmakuType>(type), time, std::wstring(comment), fontSize, fontColor, timestamp, danmakuId);
+    if (nullptr == danmaku.Get())
+    {
+        return false;
+    }
+
     controller->GetManager()->AddLiveDanmaku(danmaku);
+    return true;
 }
 
 WTF_C_API void     __stdcall WTF_Start(WTF_Instance* instance) {
