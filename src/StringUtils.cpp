@@ -32,4 +32,79 @@ namespace WTFDanmaku {
         }
     }
 
+    inline double StrTod(const std::string& str, double def = 0.0)
+    {
+        const char *ptr = str.c_str();
+        char *pend;
+
+        errno = 0;
+        double ret = ::strtod(ptr, &pend);
+        if (ptr == pend || ERANGE == errno)
+        {
+            ret = def;
+        }
+
+        return ret;
+    }
+
+    inline float StrTof(const std::string& str, float def = 0.0f)
+    {
+        const char *ptr = str.c_str();
+        char *pend;
+
+        errno = 0;
+        float ret = ::strtof(ptr, &pend);
+        if (ptr == pend || ERANGE == errno)
+        {
+            ret = def;
+        }
+
+        return ret;
+    }
+
+    inline int StrToi(const std::string& str, int def = 0, int base = 10)
+    {
+        const char *ptr = str.c_str();
+        char *pend;
+
+        errno = 0;
+        long ret = ::strtol(ptr, &pend, base);
+        if (ptr == pend || ERANGE == errno || ret < INT_MIN || INT_MAX < ret)
+        {
+            ret = def;
+        }
+
+        return static_cast<int>(ret);
+    }
+
+    inline long long StrToll(const std::string& str, long long def = 0LL, int base = 10)
+    {
+        const char *ptr = str.c_str();
+        char *pend;
+
+        errno = 0;
+        long long ret = ::strtoll(ptr, &pend, base);
+        if (ptr == pend || ERANGE == errno)
+        {
+            ret = def;
+        }
+
+        return ret;
+    }
+
+    inline unsigned long long StrToull(const std::string& str, unsigned long long def = 0ull, int base = 10)
+    {
+        const char *ptr = str.c_str();
+        char *pend;
+
+        errno = 0;
+        unsigned long long ret = ::strtoull(ptr, &pend, base);
+        if (ptr == pend || ERANGE == errno)
+        {
+            ret = def;
+        }
+
+        return ret;
+    }
+
 }

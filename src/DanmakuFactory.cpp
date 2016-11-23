@@ -8,7 +8,7 @@
 
 namespace WTFDanmaku {
 
-    DanmakuRef DanmakuFactory::CreateDanmaku(DanmakuType type, time_t time, std::wstring& comment, int fontSize, int fontColor, time_t timestamp, int danmakuId) {
+    DanmakuRef DanmakuFactory::CreateDanmaku(DanmakuType type, time_t time, std::wstring& comment, int fontSize, int fontColor, time_t timestamp, uint64_t danmakuId) {
         DanmakuRef danmaku = nullptr;
 
         switch (type) {

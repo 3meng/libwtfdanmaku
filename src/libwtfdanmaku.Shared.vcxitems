@@ -16,7 +16,7 @@
   <ItemGroup>
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
-    <ItemGroup>
+  <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\include\WTFDanmaku.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\include\WTFEngine.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\include\WTFWindow.hpp" />

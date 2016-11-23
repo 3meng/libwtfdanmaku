@@ -13,7 +13,7 @@ namespace WTFDanmaku {
 
     class DanmakuFactory : public Noncopyable {
     public:
-        static DanmakuRef CreateDanmaku(DanmakuType type, time_t time, std::wstring& comment, int fontSize, int fontColor, time_t timestamp = 0, int danmakuId = 0);
+        static DanmakuRef CreateDanmaku(DanmakuType type, time_t time, std::wstring& comment, int fontSize, int fontColor, time_t timestamp = 0, uint64_t danmakuId = 0);
     };
 
 }

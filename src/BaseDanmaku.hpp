@@ -94,7 +94,7 @@ namespace WTFDanmaku {
             return mTimestamp;
         }
 
-        inline uint32_t GetDanmakuId() {
+        inline uint64_t GetDanmakuId() {
             return mDanmakuId;
         }
 
@@ -119,7 +119,7 @@ namespace WTFDanmaku {
         uint32_t mTextShadowColor = 0;
         uint32_t mFilterParams = 0;
         time_t mTimestamp = 0;
-        uint32_t mDanmakuId = 0;
+        uint64_t mDanmakuId = 0;
         int mMeasureFlag = 0;
         shared_ptr<Renderable> mRenderable;
         bool mSkipped = false;

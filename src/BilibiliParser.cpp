@@ -74,12 +74,12 @@ namespace WTFDanmaku {
             SplitString(attr, ',', attributes);
 
             if (attributes.size() >= 8) {
-                time_t time = static_cast<time_t>(std::stod(attributes[0]) * 1000);
-                DanmakuType type = static_cast<DanmakuType>(std::stoi(attributes[1]));
-                int textSize = static_cast<int>(std::stof(attributes[2]));
-                int textColor = std::stoi(attributes[3]) | 0xFF000000;
-                time_t timestamp = std::stoull(attributes[4]);
-                int danmakuId = std::stoi(attributes[7]);
+                time_t time = static_cast<time_t>(StrTod(attributes[0]) * 1000);
+                DanmakuType type = static_cast<DanmakuType>(StrToi(attributes[1]));
+                int textSize = static_cast<int>(StrTof(attributes[2]));
+                int textColor = StrToi(attributes[3]) | 0xFF000000;
+                time_t timestamp = StrToull(attributes[4]);
+                int64_t danmakuId = StrToll(attributes[7]);
                 std::wstring comment = UTF8ToWideString(node->value());
 
                 DanmakuRef danmaku = DanmakuFactory::CreateDanmaku(type, time, comment, textSize, textColor, timestamp, danmakuId);
