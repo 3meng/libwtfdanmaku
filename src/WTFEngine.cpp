@@ -69,7 +69,7 @@ namespace WTFDanmaku {
         return true;
     }
 
-    bool WTFEngine::AddDanmaku(Type type, time_t time, const wchar_t* comment, int fontSize, int fontColor, time_t timestamp, int danmakuId) {
+    bool WTFEngine::AddDanmaku(Type type, time_t time, const wchar_t* comment, int fontSize, int fontColor, time_t timestamp, uint64_t danmakuId) {
         DanmakuRef danmaku = DanmakuFactory::CreateDanmaku(static_cast<DanmakuType>(type), time, std::wstring(comment), fontSize, fontColor, timestamp, danmakuId);
         if(nullptr == danmaku.Get())
         {
@@ -80,7 +80,7 @@ namespace WTFDanmaku {
         return true;
     }
 
-    bool WTFEngine::AddLiveDanmaku(Type type, time_t time, const wchar_t* comment, int fontSize, int fontColor, time_t timestamp, int danmakuId) {
+    bool WTFEngine::AddLiveDanmaku(Type type, time_t time, const wchar_t* comment, int fontSize, int fontColor, time_t timestamp, uint64_t danmakuId) {
         DanmakuRef danmaku = DanmakuFactory::CreateDanmaku(static_cast<DanmakuType>(type), time, std::wstring(comment), fontSize, fontColor, timestamp, danmakuId);
         if (nullptr == danmaku.Get())
         {

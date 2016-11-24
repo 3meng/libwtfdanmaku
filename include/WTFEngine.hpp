@@ -42,8 +42,8 @@ namespace WTFDanmaku {
         bool LoadBilibiliFile(const char* filePath);
         bool LoadBilibiliFile(const wchar_t* filePath);
         bool LoadBilibiliXml(const char* str);
-        bool AddDanmaku(Type type, time_t time, const wchar_t* comment, int fontSize, int fontColor, time_t timestamp = 0, int danmakuId = 0);
-        bool AddLiveDanmaku(Type type, time_t time, const wchar_t* comment, int fontSize, int fontColor, time_t timestamp = 0, int danmakuId = 0);
+        bool AddDanmaku(Type type, time_t time, const wchar_t* comment, int fontSize, int fontColor, time_t timestamp = 0, uint64_t danmakuId = 0);
+        bool AddLiveDanmaku(Type type, time_t time, const wchar_t* comment, int fontSize, int fontColor, time_t timestamp = 0, uint64_t danmakuId = 0);
         void Start();
         void Pause();
         void Resume();
